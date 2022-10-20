@@ -14,22 +14,23 @@
     <script>
     function change() {
         let results = Array.from(document.querySelectorAll('.result > div')),
-            modelsChecked = document.querySelectorAll('.filter input.models:checked'),
-            processorsChecked = document.querySelectorAll('.filter input.processors:checked');
+            districtChecked = document.querySelectorAll('.filter input.district:checked'),
+            branchChecked = document.querySelectorAll('.filter input.branch:checked'),
+            casteChecked = document.querySelectorAll('.filter input.caste:checked');
         // Hide all results
         results.forEach(function(result) {
             result.style.display = 'none';
         });
         // Filter results to only those that meet ALL requirements:        
 
-        filterModelsOrProcessors(modelsChecked);
+        filterdistrictOrbranchOrcaste(districtChecked);
 
-        if (processorsChecked.length != 0) {
-            filterModelsOrProcessors(processorsChecked);
+        if (branchChecked.length != 0) {
+            filterdistrictOrbranchOrcaste(branchChecked);
         }
 
-        function filterModelsOrProcessors(modelsOrProcessorsChecked) {
-            results = Array.from(modelsOrProcessorsChecked).reduce(function(sum, input) {
+        function filterdistrictOrbranchOrcaste(districtOrbranchOrcasteChecked) {
+            results = Array.from(districtOrbranchOrcasteChecked).reduce(function(sum, input) {
                 const attrib = input.getAttribute('rel');
                 return sum.concat(results.filter(function(result) {
                     return result.classList.contains(attrib);
@@ -46,41 +47,82 @@
 </head>
 
 <body>
+    <h1>For 95%-100%</h1>
     <div class="filter">
         <h1>Select District</h1>
         <div class="checkbox">
             <label>
-                <input type="checkbox" rel="apple" class="models" onchange="change()" />Sangli</label>
+                <input type="checkbox" rel="sangli" class="district" onchange="change()" />Sangli</label>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" rel="samsung" class="models" onchange="change()" />Kolhapur</label>
+                <input type="checkbox" rel="kolhapur" class="district" onchange="change()" />Kolhapur</label>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" rel="xiaomi" class="models" onchange="change()" />Karad</label>
+                <input type="checkbox" rel="karad" class="district" onchange="change()" />Karad</label>
         </div>
-        <h1>Select processors</h1>
+    
+        
+        
+        
+        <h1>Select Branch</h1>
         <div class="checkbox">
             <label>
-                <input type="checkbox" rel="a9" class="processors" onchange="change()" />A9</label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" rel="a8" class="processors" onchange="change()" />A8</label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" rel="snapdragon" class="processors" onchange="change()" />Snapdragon</label>
+                <input type="checkbox" rel="cse" class="branch" onchange="change()" />CSE</label>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" rel="exynos" class="processors" onchange="change()" />Exynos</label>
+                <input type="checkbox" rel="civil" class="branch" onchange="change()" />Civil</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="mech" class="branch" onchange="change()" />Mechanical</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="etc" class="branch" onchange="change()" />ETC</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="etc" class="branch" onchange="change()" />ETC</label>
         </div>
     </div>
+    
+    
+    
+    
+    
+     <h1>caste</h1>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="open" class="caste" onchange="change()" />Open</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="obc" class="caste" onchange="change()" />OBC</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="sc" class="caste" onchange="change()" />SC</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="st" class="caste" onchange="change()" />ST</label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" rel="nt1" class="caste" onchange="change()" />NT1</label>
+        </div>
+    </div>
+    
+    
+    
+    
+    
     <div class="result">
-        <div class="apple a9">
-            <h1>iPhone 7</h1>
+        <div class="sangli cse open">
+            <h1>RIT CSE</h1>
         </div>
         <div class="apple a8">
             <h1>iPhone 6</h1>
